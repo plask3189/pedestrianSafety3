@@ -43,7 +43,7 @@ body {
 }
 .sidebar {
   height: 100vh;
-  
+  flex-shrink: 0; 
   margin:1vh;
   flex: 2; 
   /* padding: 20px; */
