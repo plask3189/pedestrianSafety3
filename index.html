@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <body> 
+<title>Pedestrian Safety</title>
+
+
+
+
+<script type="module" src="./index.js"></script> 
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<div class="header"> Pedestrians Rule 
+  <img src="walking2.png" alt="walking" width="100" style="float: left; padding-left: 10px;" />
+  <div class = "learn" id="about-us"> About Us </div>
+  <div class = "learn" id="learn-button">Safety Tips</div>
+  
+</div>
+<div id="popup-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-modal" class="close">&times;</span>
+    <div id="modal-info-content">
+      <h3>Pedestrian Safety Tips:</h3>
+      <ul>
+        <li>Always use crosswalks and follow traffic signals.</li>
+        <li>Stay alert and avoid using your phone while walking.</li>
+        <li>Wear bright or reflective clothing at night.</li>
+        <li>Make eye contact with drivers before crossing.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- about us:  -->
+ <!--   const aboutUsButton = document.getElementById("about-us");
+  const aboutUsModal = document.getElementById("about-us-modal"); -->
+<div id="about-us-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-about-us-modal" class="close">&times;</span>
+    <div id="modal-info-content">
+      <h3>About Us</h3>
+      <ul>
+        <li>We help you stay informed on pedestrian safety metrics.</li>
+        <li>We facilitate ran interface to let users report incidents.</li>
+        <li>Funded by the Department of Kate. </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- end about us -->
+<div class="main-container">
+  <div class="sidebar"> 
+    <div class="numbers"> 
+      <div class="stat-item">
+        <div class="stat-number" id="close-calls">0</div>
+        <div class="stat-label"> close calls </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="fatalities">0</div>
+        <div class="stat-label"> fatalities </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="injuries">0</div>
+        <div class="stat-label">injuries </div>
+      </div>
+    </div>
+
+    <div class="site-incident-section" id="site-incident-section">
+      <div style="font-size: 25px; padding:8px; margin:5px;">Site an Incident</div>
+      
+      <div class="hover-content" id="hover-content" style="padding:8px; margin:10px;">
+        <label for="incident-type"  >What happened:
+          <select id="incident-type" style="padding: 5px;border-radius: 10px;  font-size: 20px; margin:5px;">
+            <option value="injury">Injury</option>
+            <option value="fatality">Fatality</option>
+            <option value="close-call">Close Call</option>
+          </select>
+        </label>
+        <button id="select-location-btn" style="padding:8px; border-radius: 10px; font-size: 20px;">Select Location on Map</button>
+        <div id="lat-lng-values" style="margin:10px;"> </div>
+      </div>
+
+      
+    </div>
+
+      <div class="incident-trends"> Safety Trends </div>
+      <iframe src="injury_stats.html" width="100%" style="height:200px; "></iframe>
+    </div> 
+
+  <div id="map"></div>
+  <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_2sNwGIKsV_wnXX6AJ0YHmM8r-cr63wY&callback=initMap&libraries=visualization&v=weekly"
+
+defer
+></script> 
+</body>
+  
+</div>
+
+</html>
+
+

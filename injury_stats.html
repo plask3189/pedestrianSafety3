@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>Trends Dashboard</title> -->
+ 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body style="background-color: #33393a;">
+  <div class="button-group">
+    <button class="chart-button" onclick="renderChart('injury')">Injury Chart</button>
+    <button class="chart-button" onclick="renderChart('closeCall')">Close Call Chart</button>
+    <button class="chart-button" onclick="renderChart('fatality')">Fatality Chart</button>
+  </div>
+
+  <!-- <div class="explore-trends"> -->
+    <canvas id="trendChart" height="200" display="flex"></canvas>
+  <!-- </div> -->
+
+  <script>
+    const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    const dataSets = {
+      injury: [12, 15, 9, 20, 25, 18, 30, 22, 15, 10, 5, 8],
+      closeCall: [25, 20, 18, 15, 30, 35, 40, 38, 25, 20, 15, 10],
+      fatality: [1, 2, 0, 1, 3, 0, 4, 1, 2, 1, 0, 0],
+    };
+
+
+    let chartInstance;
+
+    function renderChart(type) {
+      const ctx = document.getElementById('trendChart').getContext('2d');
+
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: `${type === 'injury' ? 'Injuries' : type === 'closeCall' ? 'Close Calls' : 'Fatalities'} Reported`,
+            data: dataSets[type],
+            borderColor: type === 'injury' ? 'rgba(146, 127, 105, 1)' :
+                        type === 'closeCall' ? 'rgba(62, 100, 109, 1)' : 
+                        'rgba(221, 62, 62, 1)',
+            backgroundColor: type === 'injury' ? 'rgba(146, 127, 105, 0.6)' :
+                              type === 'closeCall' ? 'rgba(62, 100, 109, 0.6)' : 
+                              'rgba(221, 62, 62, 0.6)',
+            borderWidth: 2,
+            fill: true,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              labels: {
+                color: 'white'
+              }
+            },
+            tooltip: {
+              titleColor: 'white',
+              bodyColor: 'white',
+            }
+          },
+          scales: {
+            x: {
+              ticks: {
+                color: 'white'
+              },
+              title: {
+                display: true,
+                color: 'white'
+              }
+            },
+            y: {
+              ticks: {
+                color: 'white'
+              },
+              title: {
+                display: true,
+                text: `# of ${type === 'injury' ? 'Injuries' : type === 'closeCall' ? 'Close Calls' : 'Fatalities'}`,
+                color: 'white'
+              },
+              beginAtZero: true,
+            }
+          }
+        }
+      });
+    }
+
+    renderChart('injury');
+  </script>
+</body>
+</html>
